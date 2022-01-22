@@ -1,31 +1,34 @@
-# This is a sample Python script.
+import def_for_Classes_1
+from Classes_2 import Factories
+from Classes_2 import Units
+from Classes_2 import Tanks
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-class Myclass_1:
-    #x: int
-    def __init__(self,x=0):
-        self.x = x
-
-class Myclass_2:
-    x: int
-    def __init__(self):
-        pass
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-    #print('Hi,', name)  # Press Ctrl+F8 to toggle the breakpoint.
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    MyObject_1 = Myclass_1()
-    MyObject_1.x = 10.5
-    print(MyObject_1.x)
-    MyObject_2 = Myclass_2()
-    MyObject_2.x = 10.5
-    print (MyObject_2.x)
+    #def_for_Classes_1.def_for_Classes_1()
+    arr_Factories = []
+    arr_Factories.append(Factories("НПЗ#1", "Первый нефтеперерабатывающий завод"))
+    arr_Factories.append(Factories("НПЗ#2", "Второй нефтеперерабатывающий завод"))
 
+    arr_Units = []
+    arr_Units.append(Units("ГФУ-2", 1))
+    arr_Units.append(Units("АВТ-6", 1))
+    arr_Units.append(Units("АВТ-10", 2))
+    arr_Units.append(Units("АВТ-10", -1))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    arr_Tanks=[]
+    arr_Tanks.append(Tanks("Резервуар 1", 1500, 2000, 1))
+    arr_Tanks.append(Tanks("Резервуар 2", 2500, 3000, 1))
+    arr_Tanks.append(Tanks("Дополнительный резервуар 24", 3000, 3000, 2))
+    arr_Tanks.append(Tanks("Резервуар 35", 3000, 3000, 2))
+    arr_Tanks.append(Tanks("Резервуар 47", 4000, 5000, 2))
+    arr_Tanks.append(Tanks("Резервуар 256", 500, 500, 3))
+
+    print('')
+    for i in arr_Factories:
+        print(i.print())
+    print('')
+    for i in arr_Units:
+        print(i.print())
+    print('')
+    for i in arr_Tanks:
+        print(i.print())

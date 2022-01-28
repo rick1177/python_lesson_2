@@ -31,3 +31,8 @@ class Myclass_1:
     def __init__(self,x=0):
         self.x = x
 ```
+
+
+## TODO
+- [x] \(Optional) Выполненная задача
+- [ ] \(Optional) Не выполненная задача

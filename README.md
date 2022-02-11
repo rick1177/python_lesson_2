@@ -90,7 +90,7 @@ class example:
 ```
 
 > В даннном прмиере показано применение различных методов класса к аргументам в зависимости от их количества.  Резльтат зависит от числа аргументов.
-```puthon
+```python
 # ВАРИАНТ 2: вызов различных инициализаторов в зависимости от числа аргументов
 '''
 При инициализации объекта определяется количество аргументов
@@ -168,17 +168,24 @@ class equations_2:
         temp = temp / 5.0
         z = obj(temp)
         return z
-
-class Myclass_1:
-    #x: int
-    def __init__(self,x=0):
-        self.x = x
-
-class Myclass_2:
-    x: int = 0
-    def __init__(self):
-        pass
 ```
+
+
+Класс с таблицей-словарём аргементами
+```python
+# ВАРИАНТ **kwargs: Класс с таблицей-словарём аргементами
+class example_3:
+    def __init__(self, **kwargs):
+        self.ans = kwargs
+
+    def __str__(self):
+        s: str = ""
+        for kwarg, name in self.ans.items():
+            s += f"Значение для {kwarg} является {name} \n"
+            #print("Значение для {} является {}".format(kwarg, name))
+        return(s)
+```
+
 Вызовы для классов с несколькими аргументами
 ```python
 # Вызов для варианта класса с несколькими конструкторами 1
@@ -356,12 +363,91 @@ print(res)
 
 c= MyClass("a")
 print(type(c.x))
+
+objExample_3 = example_3(Person_1="Tom", Person_2="Elena", Person_3="Alex")
+print ("Example 3")
+print(objExample_3)
+```
+
+> Работа с классами (ограничение доступа к атрибутам и применение свойств)
+Вариант 1 - через разграничеиние полномочий с пмощью отдельных методов класса
+```python
+class GetSetDemonstration_1:
+    def __init__(self, name ="Без имени", age=0):
+        self.__name = name
+        self.__age = age
+
+    def get_age(self):
+        return self.__age
+
+    def set_age(self, age):
+        if 1 < age < 110:
+            self.__age = age
+        else:
+            print("Недопустимый возраст")
+
+    def get_name(self):
+        return self.__name
+
+    def set_name(self, name):
+        self.__name = str(name)
+```
+Вариант 2 - через применение декораторов
+```python
+class GetSetDemonstration_2:
+    def __init__(self, name ="Без имени", age=0):
+        self.__name = name
+        self.__age = age
+
+    @property
+    def age(self):
+        return self.__age
+
+    @age.setter
+    def age(self, age):
+        if 1 < age < 110:
+            self.__age = age
+        else:
+            print("Недопустимый возраст")
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        self.__name = name
+```
+Вызовы для **GetSetDemonstration_1** и **GetSetDemonstration_2**
+```python
+    gsdem_1 = GetSetDemonstration_1()
+    gsdem_2 = GetSetDemonstration_1("Бил")
+    gsdem_3 = GetSetDemonstration_1("Джордж", 15)
+    print (f"Возраст {gsdem_2.get_name()} составляет {gsdem_2.get_age()} лет")
+    gsdem_2.set_age(12)
+    print(f"Возраст {gsdem_2.get_name()} составляет {gsdem_2.get_age()} лет")
+    gsdem_1.set_name("Василий")
+    print(f"Меня зовут {gsdem_1.get_name()}")
+
+    gsdem_11 = GetSetDemonstration_2()
+    gsdem_21 = GetSetDemonstration_2("Билли")
+    gsdem_31 = GetSetDemonstration_2("Джорджия", 21)
+    print(f"Возраст {gsdem_21.name} составляет {gsdem_21.age} лет")
+    gsdem_21.age = 25
+    print(f"Возраст {gsdem_21.name} составляет {gsdem_21.age} лет")
+    gsdem_11.name = "Василий"
+    print(f"Меня зовут {gsdem_11.name}")
 ```
 
 
 ## TODO
 - [x] НАПИСАТЬ СОБСТВЕННЫЙ КЛАСС ДЛЯ ПРОУЕНТОВ!
-- [ ] Чётко выделить разницу поле / свойство
-- [ ] Привести пример работы с множеством аргументов с применением kwargs
-- [ ] Привести примеры наследования
+- [x] Чётко выделить разницу поле / свойство
+- [x] Привести пример работы с множеством аргументов с применением kwargs
+- [x] Привести примеры наследования
+- [ ] Разобрать работу с файлами
+- [ ] Начать изучать структуры 
+- [ ] Научиться преобразовывать полученный их файла объект в объект класса
+- [ ] методы логирования
+- [ ] способы хранения конфигурации программы
 - [ ] Продолжить работу с примером
